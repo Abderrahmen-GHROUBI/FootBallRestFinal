@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Competition Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <i class="material-icons">sports_soccer</i>
+                <h1>Football Manager</h1>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-view="competitions">Competitions</li>
+                <li data-view="matches">Matches</li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <div class="view competitions-view active">
+                <div class="header">
+                    <h2>Competitions</h2>
+                    <button class="btn-add" onclick="openCompetitionModal()">
+                        <i class="material-icons">add</i> Add Competition
+                    </button>
+                </div>
+                <div class="competitions-grid" id="competitions-grid"></div>
+            </div>
+
+            <div class="view matches-view">
+                <div class="header">
+                    <h2>Matches</h2>
+                    <button class="btn-add" onclick="openMatchModal()">
+                        <i class="material-icons">add</i> Add Match
+                    </button>
+                </div>
+                <div class="matches-list" id="matches-list"></div>
+            </div>
+        </main>
+
+        <!-- Competition Modal -->
+        <div class="modal" id="competition-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add Competition</h3>
+                    <i class="material-icons close" onclick="closeCompetitionModal()">close</i>
+                </div>
+                <form id="competition-form">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input type="text" name="country" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="number" name="year" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Winner</label>
+                        <input type="text" name="winner" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Runner-up</label>
+                        <input type="text" name="runnerup" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeCompetitionModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Match Modal -->
+        <div class="modal" id="match-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add Match</h3>
+                    <i class="material-icons close" onclick="closeMatchModal()">close</i>
+                </div>
+                <form id="match-form">
+                    <div class="form-group">
+                        <label>Competition</label>
+                        <select name="competition" required id="competition-select"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="number" name="year" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Round</label>
+                        <input type="text" name="round" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Team 1</label>
+                        <input type="text" name="team1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Team 2</label>
+                        <input type="text" name="team2" required>
+                    </div>
+                    <div class="form-group score-group">
+                        <div>
+                            <label>Team 1 Goals</label>
+                            <input type="number" name="team1goals" required min="0">
+                        </div>
+                        <div>
+                            <label>Team 2 Goals</label>
+                            <input type="number" name="team2goals" required min="0">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" onclick="closeMatchModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
